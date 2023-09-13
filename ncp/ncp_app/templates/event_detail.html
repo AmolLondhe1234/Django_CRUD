@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ event.title }}</title>
+</head>
+<body style="background-image: ('1920px-Flag_of_Nationalist_Congress_Party.png'); background-repeat: no-repeat; ">
+    <h1>{{ event.title }}</h1>
+    <p>{{ event.description }}</p>
+    <p>Date: {{ event.date }}</p>
+    <p>Location: {{ event.location }}</p>
+
+    {% if event.photos.all %}
+    <h2>Event Photos</h2>
+    <ul>
+        {% for photo in event.photos.all %}
+            <li><img src="{{ photo.photo}}" alt="{{ event.title }} Photo"></li>
+        {% empty %}
+            <li>No photos available</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if event.videos.all %}
+    <h2>Event Videos</h2>
+    <ul>
+        {% for video in event.videos.all %}
+            <li><a href="{{ video.video_url }}">{{ event.title }} Video</a></li>
+        {% empty %}
+            <li>No videos available</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

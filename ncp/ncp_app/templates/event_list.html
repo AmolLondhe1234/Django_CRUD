@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event List</title>
+</head>
+<body>
+    <h1>Upcoming Events</h1>
+    <ul>
+        {% for event in events.upcoming_events %}
+            <li><a href="{% url 'events:event-detail' event.pk %}">{{ event.title }}</a></li>
+        {% empty %}
+            <li>No upcoming events</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Past Events</h1>
+    <ul>
+        {% for event in events.past_events %}
+            <li><a href="{% url 'events:event-detail' event.pk %}">{{ event.title }}</a></li>
+        {% empty %}
+            <li>No past events</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
